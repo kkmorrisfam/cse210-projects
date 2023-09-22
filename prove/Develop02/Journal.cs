@@ -11,7 +11,7 @@ public class Journal
     }
     public void DisplayAll()
     {
-        Console.WriteLine("DisplayAll() method called");
+        //Console.WriteLine("DisplayAll() method called");
         foreach (Entry entry in _entries)
         {
             entry.Display();
@@ -20,33 +20,44 @@ public class Journal
 
     public void SaveToFile(string aFilename)
     {
-        Console.WriteLine($"SaveToFile() method called with {aFilename}");
-        // using (StreamWriter outputFile = new StreamWriter(aFilename))
-        //         {
-        //             // You can use the $ and include variables just like with Console.WriteLine
-        //             // string color = "Blue";
-        //             // outputFile.WriteLine($"My favorite color is {color}");
-                    
-        //         }
+        using(StreamWriter outputFile = new StreamWriter(aFilename))
+        {
+            Console.WriteLine($"SaveToFile() method called with {aFilename}");
+            foreach (Entry entry in _entries)
+            {
+                //save each entry as a new line in the file.
+                outputFile.WriteLine($"{entry._date}**{entry._promptText}**{entry._entryText}");
+            }
+
+        }
     }
 
     public void LoadFromFile(string aFilename)
     {
-        Console.WriteLine($"LoadFromFile() method called with {aFilename}");
-        //string filename = "myFile.txt";
-        // string[] lines = System.IO.File.ReadAllLines(aFilename);
+        Console.WriteLine("Reading List from file...");
 
-        //  Console.WriteLine(reader.ReadToEnd());
-        // foreach (string line in lines)
-        // {
-        //     string[] parts = line.Split(",");
+        //read whole file at once and put into string array
+        string[] lines = System.IO.File.ReadAllLines(aFilename);
 
-        //     // string date = parts[0];
-        //     // string prompt = parts[1];
-        //     // string entry = parts[2];
-           
-        // }
-        
+        //read each line in array              
+        foreach (string line in lines)
+        {
+            // line will be split by ** like: date,prompt,entry           
+            string[] partsArray = line.Split("**");
+
+            // to visualize:
+            // partsArray[0] = 09/22/2023
+            // partsArray[1] = a prompt that is saved
+            // partsArray[2] = an entry that is saved
+
+            Entry newEntry = new Entry();
+            newEntry._date = partsArray[0];
+            newEntry._promptText = partsArray[1];
+            newEntry._entryText = partsArray[2];          
+
+            _entries.Add(newEntry);
+        }
+        //return entryList;
     }
 
     //construct

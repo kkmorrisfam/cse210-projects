@@ -33,9 +33,8 @@ class Program
     {
         int userChoice = -1;
         string fileName;
-        Journal myJournal = new Journal();  //create new Journal object
-        //create new instance of Entry object
-        Entry myEntry = new Entry();
+        //create new Journal object
+        Journal myJournal = new Journal();  
        
         DisplayWelcome();
 
@@ -44,15 +43,20 @@ class Program
             DisplayMenu();
             userChoice = PromptUserChoice();         
 
+            //create new instance of Entry object
+            Entry myEntry = new Entry();
+              
+
             //Write Entry
             if (userChoice == 1)
-            {                
+            {                  
                 //set date
                 DateTime theCurrentTime = DateTime.Now;
                 myEntry._date = theCurrentTime.ToShortDateString();
                              
-                //get randomPrompt
-                myEntry._promptText = "Display Random Prompt:  "; // placeholder - put random prompt
+                //get randomPrompt                
+                PromptGenerator thisPrompt = new PromptGenerator();
+                myEntry._promptText = thisPrompt.GetRandomPrompt();
                 
                 //display randomPrompt
                 Console.WriteLine(myEntry._promptText);
