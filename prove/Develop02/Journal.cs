@@ -4,6 +4,9 @@ public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
+    //not sure if I need to make this public or not
+    public Boolean _loadFile = false;
+
     public void AddEntry(Entry newEntry)   
     {  
         _entries.Add(newEntry);
@@ -18,26 +21,50 @@ public class Journal
         }
     }
 
-    public void SaveToFile(string aFilename)
-    {
-        using(StreamWriter outputFile = new StreamWriter(aFilename))
-        {
-            Console.WriteLine($"SaveToFile() method called with {aFilename}");
-            foreach (Entry entry in _entries)
-            {
-                //save each entry as a new line in the file.
-                outputFile.WriteLine($"{entry._date}**{entry._promptText}**{entry._entryText}");
+    public void SaveToFile(string aFileName)
+    {   
+        if (_loadFile == false)
+        {        //file2.BaseStream.Seek(0, SeekOrigin.End); //doesn't work in this context
+            //Appends all information to same file name, not overwrites it.
+            using (FileStream aFileStream = new FileStream(aFileName, FileMode.Append, FileAccess.Write))       
+            using(StreamWriter outputFile = new StreamWriter(aFileStream))
+            {            
+                // { aFileName.BaseStream.Seek(0, SeekOrigin.End);}    
+                //Console.WriteLine($"SaveToFile() method called with {aFileName}");
+                foreach (Entry entry in _entries)
+                {
+                    //save each entry as a new line in the file.
+                    outputFile.WriteLine($"{entry._date}**{entry._promptText}**{entry._entryText}");
+                }
+
             }
+        }
+        else
+        {
+             using(StreamWriter outputFile = new StreamWriter(aFileName))
+            {            
+                // { aFileName.BaseStream.Seek(0, SeekOrigin.End);}    
+                //Console.WriteLine($"SaveToFile() method called with {aFileName}");
+                foreach (Entry entry in _entries)
+                {
+                    //save each entry as a new line in the file.
+                    outputFile.WriteLine($"{entry._date}**{entry._promptText}**{entry._entryText}");
+                }
+
+            }
+
 
         }
     }
 
-    public void LoadFromFile(string aFilename)
+    public void LoadFromFile(string aFileName)
     {
         Console.WriteLine("Reading List from file...");
+        
+        _loadFile = true;
 
         //read whole file at once and put into string array
-        string[] lines = System.IO.File.ReadAllLines(aFilename);
+        string[] lines = System.IO.File.ReadAllLines(aFileName);
 
         //read each line in array              
         foreach (string line in lines)
