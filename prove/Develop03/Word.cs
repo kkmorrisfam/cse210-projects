@@ -20,8 +20,7 @@ public class Word
         //constructs an instance with no variables set.  Do I want this?
     }
 
-    //will Hide, Show, set a Boolean value 
-    //change a word from the set text to the underscore value for each character in word
+    //will set a Boolean value 
     public void Hide()
     {        
         _isHidden = true;        
@@ -38,12 +37,9 @@ public class Word
         {
             for (int i = 0; i < _text.Length; i++)
             {
-                _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-            }
-            // foreach (string text in _text)
-            // {
-            //     _text.Replace()
-            // }                 
+                _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
+                Console.WriteLine($"Inside word.GetDisplayText() {_text}");
+            }                            
         }
         return _text;
        
