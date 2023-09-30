@@ -38,7 +38,7 @@ public class Word
             for (int i = 0; i < _text.Length; i++)
             {
                 _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-                Console.WriteLine($"Inside word.GetDisplayText() {_text}");
+                // Console.WriteLine($"Inside word.GetDisplayText() {_text}");
             }                            
         }
         return _text;

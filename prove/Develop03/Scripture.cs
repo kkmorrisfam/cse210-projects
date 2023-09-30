@@ -42,7 +42,7 @@ public class Scripture
             randomInt = random.Next(0, _count-1);
             //check to see if random number is in the randomInt List, if not, add it to the list, and hide word.
             
-            containsMatch = IsThereAny(_randomIntList, randomInt); //_randomIntList.Any(randomInt); -doesn't work
+            containsMatch = IsThereAny(_randomIntList, randomInt); //_randomIntList.Any(randomInt); -mostly works
             if (containsMatch == false)  //number is not in list
             {
                 _randomIntList.Add(randomInt);  //add random number to list
@@ -55,18 +55,15 @@ public class Scripture
         
     }  //close method HideRandomWords()
 
-    // //method to get a random number
-    // private int GetRandomNumber()
-    // {
-    //     do{
-
-    //     } while ();
-
-    // }
     //is Completely hidden? boolean value;  This will tell you if the scripture is completely hidden and the program can end.
     public bool IsCompletelyHidden()
     {
-        return false;
+        bool hidden = false;
+        if (_randomIntList.Count == _count)
+        {
+            hidden = true;
+        }
+        return hidden;
     }
 
     private bool IsThereAny(List<int> xList, int xInt)

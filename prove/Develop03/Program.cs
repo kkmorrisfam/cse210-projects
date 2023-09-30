@@ -23,16 +23,17 @@ class Program
         // Console.WriteLine($"{reference1.GetDisplayText()} {newScripture.GetDisplayText()}");
         Console.WriteLine();
         Console.WriteLine("Press Enter to hide a word. Type quit to quit.");
-        
         string userInput = Console.ReadLine();
         
-        if (userInput != "quit")
+        
+        while ((userInput != "quit") | (newScripture.IsCompletelyHidden() == false)) 
         {
-            Console.WriteLine("one more line");
-            // newScripture.GetDisplayText();
+            Console.Clear();
             newScripture.HideRandomWords();
             Console.WriteLine($"{reference1.GetDisplayText()} {newScripture.GetDisplayText()}");
-        }
+
+            userInput = Console.ReadLine();
+        } 
 
     }
 }
