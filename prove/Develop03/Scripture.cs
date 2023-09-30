@@ -47,7 +47,7 @@ public class Scripture
             {
                 _randomIntList.Add(randomInt);  //add random number to list
                 _wordsList[randomInt].Hide();   //hide word at that index
-                Console.WriteLine($"Inside HideRandomWords() Random Int {randomInt}; word {_wordsList[randomInt].GetDisplayText()}");
+                //Console.WriteLine($"Inside HideRandomWords() Random Int {randomInt}; word {_wordsList[randomInt].GetDisplayText()}");
             }
         } while (containsMatch == true);    //repeat process if random number is in randomIntList
 
@@ -59,7 +59,7 @@ public class Scripture
     public bool IsCompletelyHidden()
     {
         bool hidden = false;
-        if (_randomIntList.Count == _count)
+        if (_randomIntList.Count >= _count)
         {
             hidden = true;
         }

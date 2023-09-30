@@ -47,7 +47,7 @@ public class Reference
         _book = book;
         _chapter = chapter;
         _verse = verse;  
-        Console.WriteLine($"I am in the Reference Constructor. {_book} {_chapter}:{_verse}");  
+        // Console.WriteLine($"I am in the Reference Constructor. {_book} {_chapter}:{_verse}");  
     }
 
 }
