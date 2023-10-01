@@ -6,14 +6,16 @@ public class Word
     //Keeps track of a single word and whether it is shown or hidden.
     //holds value for a word from scripture text
     private string _text;
-    // private string _textHidden;
+    private string _textSave;
     //holds boolean variable for isHidden
-    private bool _isHidden = false;  //default value is to show word
+    private bool _isHidden;  //default value is to show word
 
     //Constructor gets text value passed in from other classes
     public Word(string word)  //can this just be a word from the scripture and Not the whole scripture?
     {
         _text = word;
+        _textSave = _text;  //make a copy for later
+        _isHidden = false;
     }
 
     public Word()
@@ -24,37 +26,39 @@ public class Word
     public void setWord(string word)
     {
         _text = word;
+        _textSave = _text;  // make copy for later
+        _isHidden = false;
     }
     //will set a Boolean value 
     public void Hide()
     {        
-        _isHidden = true;  
-        // _textHidden = _text;      
-        // for (int i = 0; i < _text.Length; i++)
-        // {
-        //     _textHidden = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-        //     // Console.WriteLine($"Inside word.GetDisplayText() {_text}");
-        // }                            
-
+        _isHidden = true;                
+        for (int i = 0; i < _text.Length; i++)
+        {
+            _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
+        
+        }
     }
+    
     //unused method. can use later?
     public void Show()
     {
-        _isHidden = false;        
+        _isHidden = false;
+        _text = _textSave;     //set text back to original   
     }
     //and return string for GetDisplayText() 
     public string GetDisplayText()
     {
         
-        if (_isHidden == true)
-        {
+        // if (_isHidden == true)
+        // {
             
-            for (int i = 0; i < _text.Length; i++)
-            {
-                _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-                // Console.WriteLine($"Inside word.GetDisplayText() {_text}");
-            }                            
-        }
+        //     for (int i = 0; i < _text.Length; i++)
+        //     {
+        //         _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
+        //         // Console.WriteLine($"Inside word.GetDisplayText() {_text}");
+        //     }                            
+        // }
        
         return _text;
         

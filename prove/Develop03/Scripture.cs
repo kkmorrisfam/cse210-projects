@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
@@ -35,23 +36,22 @@ public class Scripture
         int randomInt = -1;
         // int countInt = -1;
         bool containsMatch = false;
-        //do at least once
-        do 
-        {
-            //get random number between 0 and the length of the scripture array/list
-            randomInt = random.Next(0, _count-1);
+        
+        
+        do //repeat process if random number is in randomIntList  
+        {   //get random number between 0 and the length of the scripture array/list
+            randomInt = random.Next(0, _count);
             //check to see if random number is in the randomInt List, if not, add it to the list, and hide word.
             
-            containsMatch = IsThereAny(_randomIntList, randomInt); //_randomIntList.Any(randomInt); -mostly works
+                 //created my own method to check for match
+            //containsMatch = IsThereAny(_randomIntList, randomInt); //_randomIntList.Any(randomInt); -mostly works
+            containsMatch = _randomIntList.Contains(randomInt);
             if (containsMatch == false)  //number is not in list
             {
                 _randomIntList.Add(randomInt);  //add random number to list
-                _wordsList[randomInt].Hide();   //hide word at that index
-                //Console.WriteLine($"Inside HideRandomWords() Random Int {randomInt}; word {_wordsList[randomInt].GetDisplayText()}");
+                _wordsList[randomInt].Hide();   //hide word at that index                        
             }
-        } while (containsMatch == true);    //repeat process if random number is in randomIntList
-
-        //
+        } while (containsMatch == true); 
         
     }  //close method HideRandomWords()
 
@@ -65,20 +65,23 @@ public class Scripture
         }
         return hidden;
     }
+    // I am sure there's a built in function that can do this, but I couldn' get what I found to work
+    // so I made this.
+    //***not working the final round. count is off somewhere but couldn't find it.
+    // private bool IsThereAny(List<int> xList, int xInt)
+    // {
+    //     bool isThereAny = false;
 
-    private bool IsThereAny(List<int> xList, int xInt)
-    {
-        bool isThereAny = false;
-
-        for (int i = 0; i < xList.Count; i++)
-        {
-            if (xList[i] == xInt)
-            {
-                isThereAny = true;
-            }
-        }
-        return isThereAny;
-    }
+    //     for (int i = 0; i < xList.Count; i++)
+    //     {
+    //         if (xList[i] == xInt)
+    //         {
+    //             isThereAny = true;
+    //             break;
+    //         }
+    //     }
+    //     return isThereAny;
+    // }
 
     public Scripture(Reference reference, string scripture)
     {   
@@ -99,13 +102,7 @@ public class Scripture
             //increment count variable to get the number of words in the string.
             _count ++;  
                          
-        }
-
-        //test code to see if word object holds a different word.  Cannot just print out _wordsList.
-        // foreach (Word item in _wordsList) //prints out "word object" + the word for each instance
-        // {  
-        //     Console.WriteLine($"word object: {item.GetDisplayText()}"); 
-        // }
+        }  
         
     } 
 
