@@ -24,8 +24,7 @@ class Program
         Console.WriteLine($"{reference1.GetDisplayText()} {newScripture.GetDisplayText()}");
         Console.WriteLine();
         Console.WriteLine("Press Enter to hide a word. Type quit to quit.");
-        string userInput = Console.ReadLine();
-        
+        string userInput = Console.ReadLine();        
         
         while ((userInput != "quit") && (isHidden == false))  // had to change from or to and for negatives.
         // do
@@ -46,9 +45,7 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Press Enter to hide a word. Type quit to quit.");
             userInput = Console.ReadLine();
-            isHidden = newScripture.IsCompletelyHidden();  //probably could remove this part and go back to a do/while loop.
-            // if (isHidden == true)
-            // {break;}
+            isHidden = newScripture.IsCompletelyHidden();  //probably could remove this part and go back to a do/while loop.          
         } 
         
     }

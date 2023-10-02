@@ -34,16 +34,16 @@ public class Scripture
     {        
         Random random = new Random();
         int randomInt = -1;
-        // int countInt = -1;
         bool containsMatch = false;
         
         
         do //repeat process if random number is in randomIntList  
-        {   //get random number between 0 and the length of the scripture array/list
+        {   
+            //get random number between 0 and the length of the scripture array/list
             randomInt = random.Next(0, _count);
             //check to see if random number is in the randomInt List, if not, add it to the list, and hide word.
             
-                 //created my own method to check for match
+             //created my own method to check for match
             //containsMatch = IsThereAny(_randomIntList, randomInt); //_randomIntList.Any(randomInt); -mostly works
             containsMatch = _randomIntList.Contains(randomInt);
             if (containsMatch == false)  //number is not in list
@@ -59,6 +59,7 @@ public class Scripture
     public bool IsCompletelyHidden()
     {
         bool hidden = false;
+
         if (_randomIntList.Count >= _count)
         {
             hidden = true;
@@ -93,6 +94,7 @@ public class Scripture
                
         _wordsList = new List<Word>();
         String[] splitArray = scripture.Split(' ');
+        
         foreach  (string wordInArray in splitArray)
         {
             //create a word object for each word
