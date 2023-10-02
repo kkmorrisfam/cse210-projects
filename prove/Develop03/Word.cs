@@ -8,7 +8,7 @@ public class Word
     private string _text;
     private string _textSave;
     //holds boolean variable for isHidden
-    private bool _isHidden;  //default value is to show word
+    private bool _isHidden;  //default value is to show word. no longer using this.
 
     //Constructor gets text value passed in from other classes
     public Word(string word)  //can this just be a word from the scripture and Not the whole scripture?
@@ -35,8 +35,7 @@ public class Word
         _isHidden = true;                
         for (int i = 0; i < _text.Length; i++)
         {
-            _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-        
+            _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value        
         }
     }
     
@@ -48,19 +47,7 @@ public class Word
     }
     //and return string for GetDisplayText() 
     public string GetDisplayText()
-    {
-        
-        // if (_isHidden == true)
-        // {
-            
-        //     for (int i = 0; i < _text.Length; i++)
-        //     {
-        //         _text = _text.Replace(_text[i], '_');  //single quotes denotes character, double quotes denotes string value
-        //         // Console.WriteLine($"Inside word.GetDisplayText() {_text}");
-        //     }                            
-        // }
-       
-        return _text;
-        
+    {  
+        return _text;        
     }
 }   
