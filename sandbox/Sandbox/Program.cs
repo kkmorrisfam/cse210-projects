@@ -1,139 +1,103 @@
-//program with Writing Demo Week 2
+//program with Week 4
 
 using System;
-using System.Collections.Generic; // for Lists creation
-using System.IO; //for StreamWriter
 
 class Program
 {
     static void Main(string[] args)
     {
-    
-        // Person p1 = new Person();
-        // p1._firstName = "Mary";
-        // p1._lastName = "Smith";
-        // p1._age = 25;
+        Console.WriteLine("Hello Sandbox World!");
 
-        // Person p2 = new Person();
-        // p2._firstName = "John";
-        // p2._lastName = "Watkins";
-        // p2._age = 30;
+        // Thread.Sleep(2000);
 
-        // List<Person> people = new List<Person>();
-        // people.Add(p1);
-        // people.Add(p2);
+        // Console.WriteLine("Done");
+        //different lines
+        for (int i=5; i>0; i--)
+        {
+            Console.WriteLine(i);
+            Thread.Sleep(1000);
+        }
 
-        // foreach (Person p in people)
+        //all on same line
+        for (int i=5; i>0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine(); //move to next line
+        //over same space
+        for (int i=5; i>0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");    // "\b" is the back arrow key, space, then another back arrow
+        }
+        
+        Console.WriteLine(); //move to next line
+        //animation, all on same line
+        for (int i=5; i>0; i--)
+        {
+            Console.Write(".");
+            Thread.Sleep(1000);
+        }
+        
+        Console.WriteLine(); //move to next line
+        //animation 
+        List<string> animationList = new List<string>();
+        animationList.Add("|");
+        animationList.Add("/");
+        animationList.Add("-");
+        animationList.Add("\\");    //because backplash is an escape character, to say I want to use the next char as a char
+        animationList.Add("|");
+        animationList.Add("/");
+        animationList.Add("-");
+        animationList.Add("\\");     //must use two backsplashes to use the backsplash as a char
+
+        foreach (string s in animationList)
+        {
+            Console.Write(s);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(20);
+
+        // while (DateTime.Now < endTime)
         // {
-        // Console.WriteLine(p._firstName); 
+        //     Console.Write(".");
+        //     Thread.Sleep(1000);
         // }
 
-        // SaveToFile(people);  //call method
+        Console.WriteLine("final");
 
-        List<Person> newPeople = ReadFromFile();
-        foreach (Person p in newPeople)
+        int j = 0;
+        while (DateTime.Now < endTime)
         {
-            Console.WriteLine(p._lastName);
-        }
-    }
-
-    public static void SaveToFile(List<Person> people)
-    {
-        // giving notice to screen
-        Console.WriteLine("Saving to file..."); 
-        // create file variable with filename
-        string filename = "people.txt";
-        
-        //opens and closes file with "using" and StreamWriter object
-        //as soon as program leaves this code block, file will be closed     
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            foreach (Person p in people)
+            string s = animationList[j];
+            Console.Write(s);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+            j++;
+            if (j >= animationList.Count)
             {
-                outputFile.WriteLine($"{p._firstName},{p._lastName},{p._age}"); 
-            }    
+                j = 0;
+            }
         }
 
+
+
+        Console.WriteLine("Done");
+        // Console.WriteLine(4);
+        // Thread.Sleep(1000);
+        // Console.WriteLine(3);
+        // Thread.Sleep(1000);
+        // Console.WriteLine(2);
+        // Thread.Sleep(1000);
+        // Console.WriteLine(1);
+        // Thread.Sleep(1000);
     }
 
-    public static List<Person> ReadFromFile()
-    {
-        Console.WriteLine("Reading List from file...");
-        List<Person> people = new List<Person>();
-        string filename = "people.txt";
-
-        //read whole file at once and put into string Array
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-        foreach (string line in lines)
-        {
-            // Console.WriteLine(line);      
-            //line will be split by comma like: "Marry,Smith,25"          
-            string[] parts = line.Split(",");
-
-            // parts[0] = Mary
-            // parts[1] = Smith
-            // parts[2] = 25
-
-            Person newPerson = new Person();
-            newPerson._firstName = parts[0];
-            newPerson._lastName = parts[1];
-            newPerson._age = int.Parse(parts[2]);
-
-            people.Add(newPerson);
-        
-        }
-        return people;
-
-    }
-
-
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// using System;
-// using System.Reflection.Metadata.Ecma335;
-
-// class Program
-// {
-//     static void Main(string[] args)
-//     {
-//         Console.WriteLine("Hello Sandbox World!");
-//     }
-
-//  public class getRandomPrompt
-// {
-//     public getRandomPrompt()
-//     {
-//     }
-//     }
-//     //load txt file?
-//     //int aRandomIndex;
-//     //public List<Job> _jobs = new List<Job>();
-//     // use public if I am going to use this variable outside of this page
-//     //should I pass in a list through class?
-//     public List<string> _promptList = new List<string>  //some places online added () to end of this line.
-//     {
-//         "prompt1", "prompt2", "prompt3", "prompt5", "prompt6"
-//     };
-
-//     Random myRandomNum = new Random();  //creates random instance
-//     int aRandomIndex = myRandomNum.Next(_promptList.Count); //picks random number
-//     string myRandomPrompt = _promptList[aRandomIndex];
     
-//     ReturnTypeEncoder myRandomPrompt;
-// }
-    
-// }
+ 
