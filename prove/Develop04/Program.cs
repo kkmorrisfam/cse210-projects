@@ -25,17 +25,32 @@ class Program
    
     static void Main(string[] args)
     {
-        int userChoice = DisplayMenu();
-        // Activity myActivity = new Activity();
-        // myActivity.SetDuration(20);
-        
-        if (userChoice == 1)
-        {   
-            //create a new breathing activity object
-            BreathingActivity a1 = new BreathingActivity();    
-            a1.Run();
+        //needs a while loop so that it returns to the menu unless 4 is picked
+        int userChoice = 0;
+        while (userChoice != 4)
+        {
+            userChoice = DisplayMenu();
+            
+            if (userChoice == 1)
+            {   
+                //create a new breathing activity object
+                BreathingActivity a1 = new BreathingActivity();    
+                a1.Run();          
+            }
+            else if (userChoice == 2)
+            {
+                // Console.WriteLine("In choice 2.");
+                // Thread.Sleep(1000);
+                ReflectingActivity a2 = new ReflectingActivity();
+                a2.Run();
+            }
+            else if (userChoice == 3)
+            {
+                Console.WriteLine("In choice 3.");
+                Thread.Sleep(1000);
+            }
+
         }
-        
         
         
         

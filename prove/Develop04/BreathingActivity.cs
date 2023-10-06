@@ -9,7 +9,7 @@ public class BreathingActivity : Activity
         _name = "Breathing";
         _description = @"This activity will help you relax by walking you through breathing in and out slowly.  
 Clear your mind and focus on your breathing.";
-        _duration = 60;
+        SetDuration(60);
 
     }
 
@@ -22,14 +22,45 @@ Clear your mind and focus on your breathing.";
     public void Run()
     {
         //run the program for the breathing activity
-        Console.WriteLine($"Welcome to the {_name} Activity.");
-        Console.WriteLine();
-        Console.WriteLine(_description);
-        Console.WriteLine();
-        Console.Write("How long in seconds would you like for your session?  ");
-        string userInput = Console.ReadLine();
-        int userDuration = int.Parse(userInput);
-        SetDuration(userDuration);  //can I do this?
+        // Console.Clear();
+        // Console.WriteLine($"Welcome to the {_name} Activity.");
+        // Console.WriteLine();
+        // Console.WriteLine(_description);
+        // Console.WriteLine();
+        // Thread.Sleep(5000);
+        // Console.Write("How long in seconds would you like for your session?  ");
+        // string userInput = Console.ReadLine();
+        // int userDuration = int.Parse(userInput);
+        // SetDuration(userDuration);  //can I do this?
+        // Thread.Sleep(2000);
+        DisplayStartingMessage();
+        // Console.Clear();
+        // Console.Write("Get Ready...");
+        // Thread.Sleep(4000);
+        // Console.WriteLine();
         
+        //needs a loop for the duration
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());  //accepts a double, GetDuration returns an int
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("Breath in...");
+            ShowCountDown(5);
+            Console.WriteLine();
+            Console.Write("Now breath out...");
+            ShowCountDown(7);
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+        
+        DisplayEndingMessage();
+        // Console.WriteLine();
+        // Console.WriteLine("Well Done!");
+        // Console.WriteLine();
+        // Thread.Sleep(2000);
+        // Console.WriteLine($"You have completed another {userDuration} seconds of the {_name} Activity");
+        // ShowSpinner(10);        
     }
+ 
 }

@@ -3,7 +3,7 @@ public class Activity
     //attributes
     protected string _name;
     protected string _description;
-    protected int _duration;
+    private int _duration;
     
     //constructors
    public Activity(string name, string description)
@@ -28,19 +28,33 @@ public class Activity
         //do I just do Console.WriteLine?   
         //Is the message the same?  yes and no, name and description in constructor
         // message includes description, name and duration from constructor
+        Console.Clear();
         Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine();
         Console.WriteLine(_description);
         //do I want to add prompt for duration here?  Is it the same in all start messages?
+        Console.WriteLine();
+        Thread.Sleep(5000);
+        Console.Write("How long in seconds would you like for your session?  ");
+        string userInput = Console.ReadLine();
+        _duration = int.Parse(userInput);  //set duration value to user choice        
+        Thread.Sleep(2000);        
+
+        Console.Clear();
+        Console.Write("Get Ready...");        
+        ShowSpinner(4);
+        Console.WriteLine();
 
     }
 
     public void DisplayEndingMessage()
     {
+        Console.WriteLine();
         Console.WriteLine("Well Done!");
         Console.WriteLine();
-        Console.WriteLine($"You have completed another {_duration} seconds of the {_name} Activity.");
-        // add pause with spinner here or in main program?
+        Thread.Sleep(2000);
+        Console.WriteLine($"You have completed another {_duration.ToString()} seconds of the {_name} Activity");
+        ShowSpinner(10);  
     }
     public void ShowSpinner(int seconds)
     {
@@ -63,7 +77,7 @@ public class Activity
         {
             string s = animationList[j];
             Console.Write(s);
-            Thread.Sleep(1000);
+            Thread.Sleep(800);
             Console.Write("\b \b");
             j++;
             if (j >= animationList.Count)
