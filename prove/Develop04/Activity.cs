@@ -24,27 +24,22 @@ public class Activity
  
     //methods
     public void DisplayStartingMessage()
-    {
-        //do I just do Console.WriteLine?   
-        //Is the message the same?  yes and no, name and description in constructor
-        // message includes description, name and duration from constructor
+    {        
         Console.Clear();
         Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine();
-        Console.WriteLine(_description);
-        //do I want to add prompt for duration here?  Is it the same in all start messages?
+        Console.WriteLine(_description);        
         Console.WriteLine();
-        Thread.Sleep(5000);
+        // Thread.Sleep(5000);  //just pausing long enought to let you read the screen.
         Console.Write("How long in seconds would you like for your session?  ");
         string userInput = Console.ReadLine();
         _duration = int.Parse(userInput);  //set duration value to user choice        
-        Thread.Sleep(2000);        
+        // Thread.Sleep(2000);     //just pausing for affect.   
 
         Console.Clear();
         Console.Write("Get Ready...");        
         ShowSpinner(4);
         Console.WriteLine();
-
     }
 
     public void DisplayEndingMessage()
@@ -52,7 +47,8 @@ public class Activity
         Console.WriteLine();
         Console.WriteLine("Well Done!");
         Console.WriteLine();
-        Thread.Sleep(2000);
+        // Thread.Sleep(2000);
+        ShowSpinner(5);
         Console.WriteLine($"You have completed another {_duration.ToString()} seconds of the {_name} Activity");
         ShowSpinner(10);  
     }
@@ -77,7 +73,7 @@ public class Activity
         {
             string s = animationList[j];
             Console.Write(s);
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Console.Write("\b \b");
             j++;
             if (j >= animationList.Count)

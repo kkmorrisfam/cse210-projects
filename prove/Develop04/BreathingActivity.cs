@@ -23,7 +23,7 @@ Clear your mind and focus on your breathing.";
     {
         //run the program for the breathing activity
         DisplayStartingMessage();
-        
+        Console.WriteLine();
         //needs a loop for the duration
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(GetDuration());  //accepts a double, GetDuration returns an int

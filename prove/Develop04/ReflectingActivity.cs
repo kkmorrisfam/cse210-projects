@@ -37,11 +37,6 @@ the power you have and how you can use it in other aspects of your life.";
         
         //run the activity
         DisplayStartingMessage();
-        //add to starting message?
-        // Console.Clear();
-        // Console.Write("Get Ready...");        
-        // ShowSpinner(4);
-        // Console.WriteLine();
         Console.WriteLine("Consider the following prompt: ");
         Console.WriteLine();
         string prompt = GetRandomPrompt();
@@ -58,11 +53,12 @@ the power you have and how you can use it in other aspects of your life.";
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
-        // Console.Clear();
+        
+        Console.WriteLine();
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(GetDuration());
 
-        //loop until the list is 
+        //loop until the time is up
         int j = 0;
         while (DateTime.Now < endTime)
         {
