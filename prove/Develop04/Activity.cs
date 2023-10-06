@@ -77,7 +77,7 @@ public class Activity
         {
             string s = animationList[j];
             Console.Write(s);
-            Thread.Sleep(800);
+            Thread.Sleep(500);
             Console.Write("\b \b");
             j++;
             if (j >= animationList.Count)

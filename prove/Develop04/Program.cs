@@ -46,8 +46,8 @@ class Program
             }
             else if (userChoice == 3)
             {
-                Console.WriteLine("In choice 3.");
-                Thread.Sleep(1000);
+                ListingActivity a3 = new ListingActivity();
+                a3.Run();
             }
 
         }

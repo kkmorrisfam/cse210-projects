@@ -2,6 +2,7 @@ public class ListingActivity : Activity
 {
     private int _count;
     private List<string> _prompts;
+    private List<string> _userResponses;
 
     //constructor
 
@@ -17,7 +18,16 @@ as many things as you can in a certain area.";
 
     public void Run()
     {
-        
+        DisplayStartingMessage();
+        Console.WriteLine("List as many responses you can to the following prompt: ");
+        GetRandomPrompt();   //this function prints to screen
+        Console.Write("You may begin in...");
+        ShowCountDown(5);
+        Console.WriteLine();
+        _userResponses = GetListFromUser();  //what am I doing with this list?
+        Console.WriteLine($"You listed {_count.ToString()} items!");
+        Console.WriteLine();
+        DisplayEndingMessage();
     }
     public void GetRandomPrompt()
     {
@@ -31,9 +41,17 @@ as many things as you can in a certain area.";
     public List<string> GetListFromUser()
     {
         List<string> userInput = new List<string>();
-        Console.Write(">");
-        userInput.Add(Console.ReadLine());
-        _count++;
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
+        
+        //get prompts for duration 
+        while (DateTime.Now < endTime)
+        {
+            Console.Write(">");
+            userInput.Add(Console.ReadLine());
+            _count++;
+        }
         return userInput;
     }
     public void SetPromptList()
