@@ -51,30 +51,6 @@ class Program
             }
 
         }
-        
-        
-        
-        
-        
-        
-        
-        // myActivity.DisplayStartingMessage();
-        // Console.WriteLine();
-        // myActivity.ShowSpinner(10);
-        // Console.WriteLine();
-        
-        // Console.Write(" Breath in...");
-        // myActivity.ShowCountDown(5);
-        // Console.WriteLine();
-        // myActivity.DisplayEndingMessage();
-
-        
-
-
-
     }
-}
+}  //end program
 
-// internal class BreathingActivity
-// {
-// }

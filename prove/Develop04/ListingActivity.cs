@@ -24,7 +24,7 @@ as many things as you can in a certain area.";
         Console.Write("You may begin in...");
         ShowCountDown(5);
         Console.WriteLine();
-        _userResponses = GetListFromUser();  //what am I doing with this list?
+        _userResponses = GetListFromUser(); 
         Console.WriteLine($"You listed {_count.ToString()} items!");
         Console.WriteLine();
         DisplayEndingMessage();
@@ -58,12 +58,10 @@ as many things as you can in a certain area.";
     {
         _prompts= new List<string>();
         
-        _prompts.Add("Prompt 1");
-        _prompts.Add("Prompt 2");
-        _prompts.Add("Prompt 3");
-        _prompts.Add("Prompt 4");
-        _prompts.Add("Prompt 5");
-
+        _prompts.Add("Who are the people that you appreciate?");
+        _prompts.Add("What are personal strengths of yours?");
+        _prompts.Add("Who are people that you have helped this week?");
+        _prompts.Add("When have you felt the Holy Ghost this month?");
+        _prompts.Add("Who are some of your personal heroes?");
     }
-
-}
+} //end ListingActivity class

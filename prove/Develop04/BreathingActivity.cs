@@ -40,12 +40,7 @@ Clear your mind and focus on your breathing.";
         }
         
         DisplayEndingMessage();
-        // Console.WriteLine();
-        // Console.WriteLine("Well Done!");
-        // Console.WriteLine();
-        // Thread.Sleep(2000);
-        // Console.WriteLine($"You have completed another {userDuration} seconds of the {_name} Activity");
-        // ShowSpinner(10);        
+ 
     }
  
-}
+} //end BreathingActivity class
