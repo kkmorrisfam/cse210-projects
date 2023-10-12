@@ -20,24 +20,36 @@ public class SimpleGoal : Goal
         return _isComplete;     
     }
  
- public override string GetDetailsString()
+    public override string GetDetailsString()
     {
         //includes checkbox, short name, and description.
+        // if (_isComplete == true)
+        // {
+        //     return $"[X] {_shortName} ({_description}) ";
+        // }
+        // else
+        // {
+        //     return $"[ ] {_shortName} ({_description}) ";    
+        // }        
+        return $"[{GetX()}] {_shortName} ({_description}) ";    
+    }
+    public override string GetX()
+    {
         if (_isComplete == true)
         {
-            return $"[X] {_shortName} ({_description}) ";
+            return "X";
         }
-        else
+        else 
         {
-            return $"[ ] {_shortName} ({_description}) ";    
+            return " ";
         }
-        
     }
- 
+
+
     public override string GetStringRepresentation()
     {
         // create string to be stored in a file, use delimiter ***
-        string stringRepresentation = $"Simple Goal:***{_shortName}***{_description}***{_points}***{_isComplete}";
+        string stringRepresentation = $"SimpleGoal:{_shortName}***{_description}***{_points}***{_isComplete}";
         return stringRepresentation;        
     }
 }

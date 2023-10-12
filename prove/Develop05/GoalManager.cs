@@ -111,12 +111,21 @@ public class GoalManager
         //Create Eternal Goal
         else if (userGoalInput == 2)
         {
-            Console.WriteLine("Inside Create Eternal Goal.");
+            EternalGoal e1 = new EternalGoal(name, description, points);
+            _goals.Add(e1);
         }
         //Checklist Goal
         else if (userGoalInput == 3)
         {
-            Console.WriteLine("Inside Create Checklist Goal.");
+            Console.Write("How many times does this goal need to be accomplished for a bonus?  ");
+            string input = Console.ReadLine();
+            int target = int.Parse(input);
+            Console.Write("What is the bonus for accomplishing it that many times?  ");
+            input = Console.ReadLine();
+            int bonus = int.Parse(input);
+
+            ChecklistGoal c1 = new ChecklistGoal(name, description, points, target, bonus);
+            _goals.Add(c1);
         } 
 
     }
@@ -131,6 +140,8 @@ public class GoalManager
         // records the event by calling the RecordEvent method on that goal
         //add points to score
         _score += _goals[userRecordInput].RecordEvent();   //call RecordEvent on object in list at index.
+        
+        //how do I test if the object at the index is of type ChecklistGoal?
 
 
     }
@@ -153,7 +164,7 @@ public class GoalManager
     }
 
     public int RunMenu()
-    {
+    {   Console.WriteLine();
         Console.WriteLine($"You have {_score} points.");
         Console.WriteLine();
         Console.WriteLine("Menu Options: ");
@@ -175,7 +186,7 @@ public class GoalManager
         Console.WriteLine("   1. Simple Goal");
         Console.WriteLine("   2. Eternal Goal");
         Console.WriteLine("   3. Checklist Goal");
-        Console.WriteLine("Which time of goal would you like to create?  ");
+        Console.Write("Which type of goal would you like to create?  ");
 
         string userGoalChoice = Console.ReadLine();
         return int.Parse(userGoalChoice);
