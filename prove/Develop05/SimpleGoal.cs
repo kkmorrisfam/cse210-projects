@@ -51,5 +51,5 @@ public class SimpleGoal : Goal
         // create string to be stored in a file, use delimiter ***
         string stringRepresentation = $"SimpleGoal:{_shortName}***{_description}***{_points}***{_isComplete}";
         return stringRepresentation;        
-    }
+    }   
 }

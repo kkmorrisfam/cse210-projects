@@ -40,6 +40,7 @@ public abstract class Goal
     {
         _points = points;        
     }
+
     //abstract classes - no body here
     public abstract int RecordEvent();
     public abstract bool IsComplete();
@@ -56,5 +57,6 @@ public abstract class Goal
     {
         return "X";
     }
+    
 
 }

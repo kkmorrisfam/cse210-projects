@@ -39,18 +39,17 @@ public class GoalManager
             //save goals
             else if (userMainInput == 3)
             {
-                 SaveGoals();   
+                SaveGoals();   
             }
             // Load Goals
             else if (userMainInput == 4)
             {
-
+                LoadGoals();
             }
             // Record Event
             else if (userMainInput == 5)
             {
                 RecordEvent();
-
             }
 
 
@@ -70,7 +69,7 @@ public class GoalManager
         int i = 1;
         foreach (Goal item in _goals)
         {
-            Console.WriteLine($" {i.ToString()}. {item.GetName()}");
+            Console.WriteLine($"{i}. {i.ToString()}. {item.GetName()}");
             i++;
         }
     }
@@ -82,9 +81,6 @@ public class GoalManager
         {
             Console.WriteLine(item.GetDetailsString());
         }
-        
-        
-
     }
 
     public void CreateGoal()
@@ -176,13 +172,14 @@ public class GoalManager
         //create another string[] gets each line of code, parses information out by colon
         string objectString;
         string parameterString;
-        Goal g1;
+        // Goal g1;  //can declare this here, but then when I create objects with child constructor, object doesn't
+                    // have the functionality of the child object, only the parent. Can't access child variables
 
       
         foreach(string line in lines)
         {
             //how to skip first line?
-            if (line == line[0]) continue;  //not working thinks one is a char and one is a string
+            if (line == lines[0]) continue;  //not working thinks one is a char and one is a string
             string[] firstPass = line.Split(":");
             objectString = firstPass[0];
             parameterString = firstPass[1];
@@ -192,35 +189,33 @@ public class GoalManager
             string name = secondPass[0];
             string description = secondPass[1];
             int points = int.Parse(secondPass[2]);
-            
+
+            // creates object matching label            
             if (objectString == "SimpleGoal")
             {
-                g1 = new SimpleGoal(name, description, points);
+                SimpleGoal g1 = new SimpleGoal(name, description, points);                
+                if (secondPass[3] == "True")
+                {
+                    g1._isComplete = true;
+                }
+                _goals.Add(g1);
             }
             
             else if (objectString == "ChecklistGoal")
             {
-                int target = int.Parse(secondPass[3]);
-                int bonus = int.Parse(secondPass[4]);
-                g1 = new ChecklistGoal(name, description, points, target, bonus);
+                int bonus = int.Parse(secondPass[3]);
+                int target = int.Parse(secondPass[4]);
+                int amountCompleted = int.Parse(secondPass[5]);
+                ChecklistGoal g1 = new ChecklistGoal(name, description, points, target, bonus);
+                g1._amountCompleted = amountCompleted;
+                _goals.Add(g1);
             }
             else //(objectString == "EternalGoal")
             {
-                g1 = new EternalGoal(name, description, points);
+                EternalGoal g1 = new EternalGoal(name, description, points);
+                _goals.Add(g1);
             }
-            
-
-            _goals.Add(g1);
         }
-
-        // foreach(string line in firstPass)
-        // {
-        //     string[] secondPass = line.Split("***");
-        // }
-        //1. creates object matching label
-        //2. adds name to _name, description to _description, etc.
-        //3. adds true/false to _isComplete if SimpleGoal
-        //4. adds info to Checklist goal
     }
 
     public int RunMenu()
