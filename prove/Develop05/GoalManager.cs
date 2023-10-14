@@ -51,9 +51,13 @@ public class GoalManager
             {
                 RecordEvent();
             }
+            else if (userMainInput == 6)
+            {
+                DeleteGoal();
+            }
 
 
-        } while (userMainInput != 6);
+        } while (userMainInput != 7);
 
     }
 
@@ -61,7 +65,7 @@ public class GoalManager
     {
         
         //Displays the players current score
-        Console.WriteLine($"You have {_score} points.");
+        Console.WriteLine($"You now have {_score} points.");
     }
 
     public void ListGoalNames() 
@@ -81,7 +85,7 @@ public class GoalManager
         foreach (Goal item in _goals)
         {
             Console.WriteLine(item.GetDetailsString());
-            Console.WriteLine(item.GetType());
+            // Console.WriteLine(item.GetType());  //prints the goal type: SimpleGoal etc.
         }
     }
 
@@ -137,11 +141,13 @@ public class GoalManager
         userRecordInput = userRecordInput - 1; // match index numbering of list with menu number.
         // records the event by calling the RecordEvent method on that goal
         //add points to score
-        _score += _goals[userRecordInput].RecordEvent();   //call RecordEvent on object in list at index.
-        
-        //how do I test if the object at the index is of type ChecklistGoal?
+        int points = _goals[userRecordInput].RecordEvent(); //call RecordEvent on object in list at index.
+        _score += points;   
 
+        Console.WriteLine($"Congratulations! You have earned {points} points!");
+        // Console.WriteLine($"Your now have {_score} points total.");
 
+        DisplayPlayerInfo();
     }
 
     public void SaveGoals()
@@ -198,7 +204,7 @@ public class GoalManager
                 SimpleGoal g1 = new SimpleGoal(name, description, points);                
                 if (secondPass[3] == "True")
                 {
-                    g1._isComplete = true;
+                    g1.SetIsComplete(true);
                 }
                 _goals.Add(g1);
             }
@@ -209,7 +215,7 @@ public class GoalManager
                 int target = int.Parse(secondPass[4]);
                 int amountCompleted = int.Parse(secondPass[5]);
                 ChecklistGoal g1 = new ChecklistGoal(name, description, points, target, bonus);
-                g1._amountCompleted = amountCompleted;
+                g1.SetAmountCompleted(amountCompleted);
                 _goals.Add(g1);
             }
             else //(objectString == "EternalGoal")
@@ -218,8 +224,21 @@ public class GoalManager
                 _goals.Add(g1);
             }
         }
-    }
+     }
 
+    public void DeleteGoal()
+    {
+        //asks the user which goal they want to delete
+        ListGoalNames();
+        Console.Write("Which goal would you like to delete?  (note: this does not remove any points earned from this goal)  ");
+        string userInput = Console.ReadLine();
+        int userRecordInput = int.Parse(userInput);
+        userRecordInput = userRecordInput - 1; // match index numbering of list with menu number.
+        //  the event by calling the RecordEvent method on that goal
+        //add points to score
+        // _score += _goals[userRecordInput].RecordEvent();   //call RecordEvent on object in list at index.
+        _goals.Remove(_goals[userRecordInput]);
+    }
     public int RunMenu()
     {   Console.WriteLine();
         Console.WriteLine($"You have {_score} points.");
@@ -230,7 +249,8 @@ public class GoalManager
         Console.WriteLine("   3. Save Goals");
         Console.WriteLine("   4. Load Goals");
         Console.WriteLine("   5. Record Event");
-        Console.WriteLine("   6. Quit");
+        Console.WriteLine("   6. Delete Goal");
+        Console.WriteLine("   7. Quit");
         Console.Write("Select a choice from the menu:  ");
         
         string userMainChoice = Console.ReadLine();

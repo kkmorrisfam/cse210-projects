@@ -1,8 +1,8 @@
 public class ChecklistGoal : Goal
 {
-    public int _amountCompleted;
-    public int _target;
-    public int _bonus;
+    private int _amountCompleted;
+    private int _target;
+    private int _bonus;
 
     //constructor
     public ChecklistGoal(string name, string description, int points, int target, int bonus) : base(name, description, points)
@@ -12,6 +12,10 @@ public class ChecklistGoal : Goal
         _amountCompleted = 0;
     }
 
+    public void SetAmountCompleted(int amountCompleted)
+    {
+        _amountCompleted = amountCompleted;
+    }
     public override int RecordEvent()
     {
         //increment amount completed
@@ -42,16 +46,8 @@ public class ChecklistGoal : Goal
 
     public override string GetDetailsString()
     {
-        // if (_amountCompleted == _target)
-        // {
-        //     return $"[X] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";        
-        // }
-        // else
-        // {
-        //     return $"[ ] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";        
-        // }    
-
-        return $"[{GetX()}] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";        
+            return $"[{GetX()}] {_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";   
+                 
     }
     public override string GetX()
     {

@@ -21,10 +21,10 @@ public abstract class Goal
     // {
     //     return _description;
     // }
-    // public int GetPoints()
-    // {
-    //     return _points;
-    // }
+    public int GetPoints()
+    {
+        return _points;
+    }
 
     public void SetName(string name)
     {

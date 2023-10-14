@@ -1,0 +1,4 @@
+0
+SimpleGoal:Pay taxes.***Pay my estimated self employment taxes for 2023***50***False
+EternalGoal:Say Prayers***Say my morning or evening personal prayers***30
+ChecklistGoal:Teach lesson***Teach a YW lesson when it's my turn***40***200***4***0

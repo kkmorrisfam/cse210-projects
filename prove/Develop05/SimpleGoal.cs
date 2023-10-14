@@ -1,12 +1,18 @@
 public class SimpleGoal : Goal
 {
-    public bool _isComplete;
+    private bool _isComplete;
 
     //constructor
     public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
         _isComplete = false;
     }
+
+    public void SetIsComplete(bool isComplete)
+    {
+        _isComplete = isComplete;
+    }
+     
 
     public override int RecordEvent()
     {
@@ -22,15 +28,7 @@ public class SimpleGoal : Goal
  
     public override string GetDetailsString()
     {
-        //includes checkbox, short name, and description.
-        // if (_isComplete == true)
-        // {
-        //     return $"[X] {_shortName} ({_description}) ";
-        // }
-        // else
-        // {
-        //     return $"[ ] {_shortName} ({_description}) ";    
-        // }        
+         
         return $"[{GetX()}] {_shortName} ({_description}) ";    
     }
     public override string GetX()
