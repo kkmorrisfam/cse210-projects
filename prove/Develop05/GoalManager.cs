@@ -59,8 +59,9 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine("");
+        
         //Displays the players current score
+        Console.WriteLine($"You have {_score} points.");
     }
 
     public void ListGoalNames() 
@@ -80,6 +81,7 @@ public class GoalManager
         foreach (Goal item in _goals)
         {
             Console.WriteLine(item.GetDetailsString());
+            Console.WriteLine(item.GetType());
         }
     }
 
