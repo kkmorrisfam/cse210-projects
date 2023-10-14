@@ -39,7 +39,7 @@ public class GoalManager
             //save goals
             else if (userMainInput == 3)
             {
-
+                 SaveGoals();   
             }
             // Load Goals
             else if (userMainInput == 4)
@@ -148,15 +148,75 @@ public class GoalManager
 
     public void SaveGoals()
     {
+        //get filename
+        Console.Write("Enter the name of the file to save:  ");
+        string aFileName = Console.ReadLine();
         //saves the list of goals to a file.
-        //gets points and adds to first line of file
-        //calls GetStringRepresentation() for each goal and adds each to a line in the file
+                
+        using(StreamWriter outputFile = new StreamWriter(aFileName))
+        {
+            //gets points and adds to first line of file
+            outputFile.WriteLine(_score);
+            foreach (Goal goal in _goals)
+            {
+                //calls GetStringRepresentation() for each goal and adds each to a line in the file
+                outputFile.WriteLine(goal.GetStringRepresentation());
+            }
+        }
     }
     public void LoadGoals()
     {
-        //loads the list of goals from a file.
+        Console.Write("Enter the name of the file to open:  ");
+        string aFileName = Console.ReadLine();
+
+        //loads all lines from a file. each line is a string
+        string[] lines = System.IO.File.ReadAllLines(aFileName);
         //gets first line, transfers it to score variable
-        //gets each line of code, parses information out by ***
+        _score = int.Parse(lines[0]);
+        //create another string[] gets each line of code, parses information out by colon
+        string objectString;
+        string parameterString;
+        Goal g1;
+
+      
+        foreach(string line in lines)
+        {
+            //how to skip first line?
+            if (line == line[0]) continue;  //not working thinks one is a char and one is a string
+            string[] firstPass = line.Split(":");
+            objectString = firstPass[0];
+            parameterString = firstPass[1];
+            
+            
+            string[] secondPass = parameterString.Split("***");
+            string name = secondPass[0];
+            string description = secondPass[1];
+            int points = int.Parse(secondPass[2]);
+            
+            if (objectString == "SimpleGoal")
+            {
+                g1 = new SimpleGoal(name, description, points);
+            }
+            
+            else if (objectString == "ChecklistGoal")
+            {
+                int target = int.Parse(secondPass[3]);
+                int bonus = int.Parse(secondPass[4]);
+                g1 = new ChecklistGoal(name, description, points, target, bonus);
+            }
+            else //(objectString == "EternalGoal")
+            {
+                g1 = new EternalGoal(name, description, points);
+            }
+            
+
+            _goals.Add(g1);
+        }
+
+        // foreach(string line in firstPass)
+        // {
+        //     string[] secondPass = line.Split("***");
+        // }
         //1. creates object matching label
         //2. adds name to _name, description to _description, etc.
         //3. adds true/false to _isComplete if SimpleGoal
