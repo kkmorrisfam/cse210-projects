@@ -15,16 +15,12 @@ public class Order
     {
         _products = new List<Product>();
     }
+
     public void OrderItem(string name, string productID, double price, int quantity)
     {     
         Product product = new Product(name, productID, price, quantity);   
         _products.Add(product);
     }    
-    
-    // public void OrderItem(Product product)
-    // {        
-    //     _products.Add(product);
-    // }
 
     public void SetCustomer(string name, string street, string city, string state, string country)
     {
@@ -44,23 +40,54 @@ public class Order
 
     public string GetShippingLabel()
     {
-        return "";
+        return $"{_customer.GetName()}\n{_customer.GetAddress()}";
+        // shippingLabel += _customer.GetName();        
+        // shippingLabel += _customer.GetAddress();
+        // return shippingLabel;
     }
 
-    public float GetTotalPrice()
+    public double GetTotalPrice()
     {
+        double totalPrice = 0;
+        foreach (Product product in _products)
+        {
+            totalPrice += product.GetOrderPrice();
+        }
         //if customer in USA add $5 shipping, else add $35 shipping
-        return -1;
+        totalPrice += GetShippingCost();
+        return totalPrice;
     }
 
-    public void PrintPackingLabel()
+    public double GetShippingCost()
     {
-        //get packing label, include product name & ID
+        double shippingCost = 0;
+        if (_customer.InCountry() == true)
+        {
+            shippingCost = 5;
+        }
+        else
+        {
+            shippingCost = 35;
+        }
+        return shippingCost;
+    {
+
     }
 
-    public void PrintShippingLabel()
+        }
+        public string GetCustomerName()
     {
-        //get shipping address, add customer name & address
+        return $"{_customer.GetName()}";
     }
+
+    // public void PrintPackingLabel()
+    // {
+    //     //get packing label, include product name & ID
+    // }
+
+    // public void PrintShippingLabel()
+    // {
+    //     //get shipping address, add customer name & address
+    // }
 
 }

@@ -14,5 +14,15 @@ public class Customer
     {
         return _address.InUSA();
     }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetAddress()
+    {
+        return _address.GetAddress();
+    }
     
 }

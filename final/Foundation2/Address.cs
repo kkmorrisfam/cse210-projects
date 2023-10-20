@@ -15,7 +15,7 @@ public class Address
 
     public string GetAddress()
     {
-        return $"{_street}/n{_city}, {_state}  {_country}";
+        return $"{_street}\n{_city}, {_state}  {_country}";
     }
 
     public bool InUSA()
@@ -28,7 +28,7 @@ public class Address
         {
             return false;
         }
-        
+ 
     }
 
 }
