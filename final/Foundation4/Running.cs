@@ -18,19 +18,7 @@ public class Running : Activity
     public override double GetPace()
     {
         //pace = time / distance
-        return GetMinutes() / _distance;
+        return GetMinutes() / _distance; //Get a stackoverflow if I use the base method
     }
-    // public override double GetSpeed()
-    // {
-    //     // speed = (distance / time) * 60 for MPH
-    //     // return (_distance / GetMinutes()) * 60;
-    //     return 60 / GetPace();
-    // }
-    // public override string GetSummary()
-    // {
-    //     //can I do this?
-    //     string summary = $"{_date} Running  ({GetMinutes()} min) - Distance {GetDistance()} miles, Speed: {GetSpeed()}mph, Pace {GetPace()} min per mile.";
-    //     return summary;
-    // }
 
 }//end Running class

@@ -17,8 +17,4 @@ public class Cycling : Activity
         return _speed * (GetMinutes()/60);
     }
 
-    public override double GetPace()
-    {
-        return GetMinutes() / GetDistance();
-    }
 } //end class
