@@ -21,20 +21,22 @@ public abstract class Activity
     {
         return _minutes;
     }
-    //must be defined in derived classes
-    //need to be virtual instead? 
-    public virtual double GetDistance()
+    //abstract methods must be defined in derived classes
+    //need to be virtual instead?  
+    public abstract double GetDistance();
+    public virtual double GetSpeed()
     {
-        //do nothing
-        return -1;
+        return 60/ GetPace();
     }
-    public abstract double GetSpeed();
-    public abstract double GetPace();
+    public virtual double GetPace()
+    {
+        return 60 / GetSpeed();
+    }
     
-    //can I use the abstract methods in the GetSummary? Or maybe that's why they need to be virtual instead of abstract?
+    //can I use the abstract methods in the GetSummary? Or maybe that's why they need to be virtual instead of abstract? Yes I can
     public virtual string GetSummary()
     {
-        //can I do this?
+        //can I do this? Yes I can
         string summary = $"{_date} {GetType()} ({GetMinutes()} min) - Distance {GetDistance()} miles, Speed: {GetSpeed()}mph, Pace {GetPace()} min per mile.";
         return summary;
     }

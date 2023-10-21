@@ -20,11 +20,12 @@ public class Running : Activity
         //pace = time / distance
         return GetMinutes() / _distance;
     }
-    public override double GetSpeed()
-    {
-        // speed = (distance / time) * 60 for MPH
-        return (_distance / GetMinutes()) * 60;
-    }
+    // public override double GetSpeed()
+    // {
+    //     // speed = (distance / time) * 60 for MPH
+    //     // return (_distance / GetMinutes()) * 60;
+    //     return 60 / GetPace();
+    // }
     // public override string GetSummary()
     // {
     //     //can I do this?
