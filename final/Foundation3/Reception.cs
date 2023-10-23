@@ -19,7 +19,6 @@ public class Reception : Event
         _email = email;
     }
 
-    //can I do this?
     public string DisplayAdditionalDetails()
     {
         return $"RSVP: {GetEmail()}";

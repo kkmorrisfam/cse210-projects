@@ -43,10 +43,7 @@ public class Event
     {
         return $"{GetEventTitle()}\n{GetDescription()}\n{GetDate()} {GetTime()}\n{GetAddress()}";
     }
-    // public void DisplayFullDetails()
-    // {
-
-    // }
+ 
     public string DisplayShortDescription()
     {
         return $"{GetEventTitle()}: {GetDescription()}  --  {GetDate()}";

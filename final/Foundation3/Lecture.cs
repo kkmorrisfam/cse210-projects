@@ -29,7 +29,6 @@ public class Lecture : Event
         _capacity = capacity;
     }
 
-    //can I do this?
     public string DisplayAdditionalDetails()
     {
         return $"Speaker: {GetSpeaker()} --  Capacity: {GetCapacity()}";
