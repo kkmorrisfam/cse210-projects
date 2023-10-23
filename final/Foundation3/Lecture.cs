@@ -30,8 +30,8 @@ public class Lecture : Event
     }
 
     //can I do this?
-    public void DisplayFullDetails()
+    public string DisplayAdditionalDetails()
     {
-        //do something
+        return $"Speaker: {GetSpeaker()} --  Capacity: {GetCapacity()}";
     }
 }

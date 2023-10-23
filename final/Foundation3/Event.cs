@@ -15,21 +15,41 @@ public class Event
         _time = time;        
     }
 
-    public void GetAddress(string street, string city, string state, string country)
+    public void SetAddress(string street, string city, string state, string country)
     {
         _address = new Address(street, city, state, country);
     }
-    public void DisplayDetails()
+    public string GetAddress()
     {
-
+        return _address.GetAddress();
+    }
+    public string GetEventTitle()
+    {
+        return _eventTitle;
+    }
+    public string GetDescription()
+    {
+        return _desciption;
+    }
+    public string GetDate()
+    {
+        return _date;        
+    }
+    public string GetTime()
+    {
+        return _time;
+    }
+    public string DisplayDetails()
+    {
+        return $"{GetEventTitle()}\n{GetDescription()}\n{GetDate()} {GetTime()}\n{GetAddress()}";
     }
     // public void DisplayFullDetails()
     // {
 
     // }
-    public void DisplayShortDescription()
+    public string DisplayShortDescription()
     {
-
+        return $"{GetEventTitle()}: {GetDescription()}  --  {GetDate()}";
     }
 
 }

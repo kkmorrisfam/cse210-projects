@@ -20,8 +20,8 @@ public class Reception : Event
     }
 
     //can I do this?
-    public void DisplayFullDetails()
+    public string DisplayAdditionalDetails()
     {
-
+        return $"RSVP: {GetEmail()}";
     }
 }
