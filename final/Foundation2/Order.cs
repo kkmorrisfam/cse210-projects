@@ -41,9 +41,6 @@ public class Order
     public string GetShippingLabel()
     {
         return $"{_customer.GetName()}\n{_customer.GetAddress()}";
-        // shippingLabel += _customer.GetName();        
-        // shippingLabel += _customer.GetAddress();
-        // return shippingLabel;
     }
 
     public double GetTotalPrice()
@@ -58,6 +55,7 @@ public class Order
         return totalPrice;
     }
 
+    //check to see if customer in USA or not
     public double GetShippingCost()
     {
         double shippingCost = 0;
@@ -80,14 +78,5 @@ public class Order
         return $"{_customer.GetName()}";
     }
 
-    // public void PrintPackingLabel()
-    // {
-    //     //get packing label, include product name & ID
-    // }
-
-    // public void PrintShippingLabel()
-    // {
-    //     //get shipping address, add customer name & address
-    // }
-
+ 
 }

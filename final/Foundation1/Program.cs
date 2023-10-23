@@ -92,6 +92,9 @@ class Program
         videos.Add(video2);
         videos.Add(video3);
 
+        //clear screen
+        Console.Clear();
+
         //Display title, author, length, number of comments and list each comment for that video
         foreach(Video vid in videos)
         {

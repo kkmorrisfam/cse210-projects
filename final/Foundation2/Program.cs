@@ -37,6 +37,9 @@ order4.OrderItem("Garden Shears", "ID622", 12.99, 1);
 order4.OrderItem("Garden Gloves", "ID601", 16.99, 2);
 orders.Add(order4);
 
+//clear screen
+Console.Clear();
+
 //Print Packing Labels       
 Console.WriteLine();
 Console.WriteLine("Packing Labels:");
@@ -52,10 +55,12 @@ foreach (Order order in orders)
     Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 }
 
+//print shipping labels
 Console.WriteLine();
 Console.WriteLine("***********************************");
 Console.WriteLine();
 Console.WriteLine("Shipping Labels:");
+Console.WriteLine();
 foreach (Order order in orders)
 {
     Console.WriteLine($"{order.GetShippingLabel()}");
