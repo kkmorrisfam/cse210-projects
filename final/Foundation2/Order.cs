@@ -31,7 +31,7 @@ public class Order
         string productReturn = "";
         foreach(Product product in _products)
         {        
-            string prod1 = $"{product.GetProductID()}: {product.GetName()}  -- price: ${product.GetPrice()} Qty: {product.GetQuantity()} ${product.GetOrderPrice()}\n";
+            string prod1 = $"{product.GetProductID()}: {product.GetName()}  -- each: ${product.GetPrice()} Qty: {product.GetQuantity()} subtotal: ${product.GetOrderPrice()}\n";
             productReturn += prod1;
         }
         
