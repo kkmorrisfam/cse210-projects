@@ -40,16 +40,13 @@ class Program
             Console.WriteLine();
         }
 
-        //Print full details with additional details that are not avalable in parent class
-        //could have overridden child classes, but that's the next principle in Foundation 4
         Console.WriteLine("Printing Full Marketing Message---");
-        Console.WriteLine(l1.DisplayDetails());
-        Console.WriteLine(l1.DisplayAdditionalDetails());
         Console.WriteLine();
-        Console.WriteLine(r1.DisplayDetails());
-        Console.WriteLine(r1.DisplayAdditionalDetails());
+        Console.WriteLine(l1.DisplayFullDetails());        
         Console.WriteLine();
-        Console.WriteLine(o1.DisplayDetails());
-        Console.WriteLine(o1.DisplayAdditionalDetails());
+        Console.WriteLine(r1.DisplayFullDetails());
+        Console.WriteLine();
+        Console.WriteLine(o1.DisplayFullDetails());
+       
     }
 }

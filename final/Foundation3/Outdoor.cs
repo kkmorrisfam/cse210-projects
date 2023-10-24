@@ -15,8 +15,8 @@ public class Outdoor : Event
     {
         _weather = weather;
     }
-    public string DisplayAdditionalDetails()
+    public string DisplayFullDetails()
     {
-        return $"Weather Outlook: {GetWeather()}";
+        return base.DisplayDetails() + $"\nWeather Outlook: {GetWeather()}";
     }
 }

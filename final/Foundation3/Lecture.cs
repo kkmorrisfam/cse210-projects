@@ -29,8 +29,8 @@ public class Lecture : Event
         _capacity = capacity;
     }
 
-    public string DisplayAdditionalDetails()
+    public string DisplayFullDetails()
     {
-        return $"Speaker: {GetSpeaker()} --  Capacity: {GetCapacity()}";
+        return base.DisplayDetails() + $"\nSpeaker: {GetSpeaker()} --  Capacity: {GetCapacity()}";
     }
 }

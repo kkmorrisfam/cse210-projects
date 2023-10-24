@@ -19,8 +19,9 @@ public class Reception : Event
         _email = email;
     }
 
-    public string DisplayAdditionalDetails()
+    public string DisplayFullDetails()
     {
-        return $"RSVP: {GetEmail()}";
+        return base.DisplayDetails() + $"\nRSVP: {GetEmail()}";
     }
+ 
 }
